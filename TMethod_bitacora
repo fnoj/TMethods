@@ -1,0 +1,9 @@
+Se agregan los métodos Print() y PrintFile() a las clases (TEuler, TEuler2, TRk4, TVerlet).
+En los métodos Draw() se aumenta el número de Puntos de TGraph de fn a fn+1
+Se modifican los nombres de las gráficas en los métodos Darw()
+
+Cambiar el loop de TRk4.
+Faltan Métodos SetFunction y GetFunction.
+Fatan Constructores......
+
+Incluir ID para el tipo de función ingresada por el usuario.
