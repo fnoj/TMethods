@@ -1,3 +1,24 @@
+///////////////////////////////////////////////////////////////////////////
+//                                                                       //
+// NOTICE OF COPYRIGHT                                                   //
+//                                                                       //
+//        Copyright (C) 2013   John Suárez - Diego Velasquez             //
+//                                                                       //
+//                                                                       //
+// This program is free software; you can redistribute it and/or modify  //
+// it under the terms of the GNU General Public License as published by  //
+// the Free Software Foundation; either version 2 of the License, or     //
+// (at your option) any later version.                                   //
+//                                                                       //
+// This program is distributed in the hope that it will be useful,       //
+// but WITHOUT ANY WARRANTY; without even the implied warranty of        //
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         //
+// GNU General Public License for more details:                          //
+//                                                                       //
+//          http://www.gnu.org/copyleft/gpl.html                         //
+//                                                                       //
+///////////////////////////////////////////////////////////////////////////
+
 #include "TEuler.h" 
 
 void Euler(){
@@ -5,14 +26,14 @@ void Euler(){
   c1->Range(-20,-20,20,20);
   c1->SetGrid();
 
-  e1 = new TEuler("-x/sqrt(16-x*x)",-4,4,4,4,100);
+  e1 = new TEuler("-x/sqrt(16-x*x)",-4,4,4,1000);
   e1->Draw();
 
   Double_t *fx = e1->GetX();
   Double_t *fy = e1->GetY();
 
-  //  e1->Print();
-  //  e1->PrintFile("dat.dat");
+  e1->Print();
+  //e1->PrintFile("dat.dat");
 
   gPad->Update();
 }
