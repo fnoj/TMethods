@@ -32,7 +32,6 @@ class TVerlet{
   Double_t fxf;
   Double_t fy1;//xfinal   
   Double_t fyo;   //y inicial
-  Double_t fyf;  //yfinal
   Double_t fx;
   Double_t fy;
   Int_t fn;  //Número de Puntos 
@@ -44,15 +43,18 @@ class TVerlet{
 
 
  public:
-  TVerlet(Char_t *func,Double_t xo, Double_t yo,,Double_t x1,Double_t y1, Double_t xf, Double_t yf, Double_t n);
+  TVerlet(Char_t *func,Double_t xo, Double_t yo,,Double_t x1,Double_t y1, Double_t xf, Double_t n);
+  TVerlet(Char_t *func,Double_t xo, Double_t yo,,Double_t x1,Double_t y1, Double_t xf);
+  TVerlet();
    
   void SetXo(Double_t Xo){fxo=Xo;}
   void SetXf(Double_t Xf){fxf=Xf;}
   void SetYo(Double_t Yo){fyo=Yo;}
-  void SetYf(Double_t Yf){fyf=Yf;}
   void SetX1(Double_t X1){fx1=X1;}
   void SetY1(Double_t Y1){fy1=Y1;}
   void SetN(Int_t N){fn=N;}
+  void SetH(Double_t H){fh=H;}
+  void SetFunction(Char_t *f){ff=f;}              
   Double_t GetXo(){return fxo;}
   Double_t GetXf(){return fxf;}
   Double_t GetYo(){return fyo;}
@@ -61,6 +63,7 @@ class TVerlet{
   Double_t GetH(){return fh;}
   Double_t GetX(){return fX;}
   Double_t GetY(){return fY;}
+  Char_t *GetFunction(){return ff;}               
 
   // void SetFunction(string f){ffunct=f;}                 //Revisar 
   //  string GetFunction(){return ffunct;}                ///Revisar
@@ -72,8 +75,13 @@ class TVerlet{
 
 };
 
-TVerlet::TVerlet(Char_t *func,Double_t xo,Double_t yo,Double_t x1,Double_t y1 ,Double_t xf, Double_t yf, Double_t n){
-  fxo=xo; fyo=yo; fxf=xf; fyf=yf; fn=n; fh=(fxf-fxo)/fn; ff=func; fx1=x1; fy1=y1;
+TVerlet::TVerlet(Char_t *func,Double_t xo,Double_t yo,Double_t x1,Double_t y1 ,Double_t xf, Double_t n){
+  fxo=xo; fyo=yo; fxf=xf; fn=n; fh=(fxf-fxo)/fn; ff=func; fx1=x1; fy1=y1;
+  TVerlet::Init();
+}
+
+TVerlet::TVerlet(Char_t *func,Double_t xo,Double_t yo,Double_t x1,Double_t y1 ,Double_t xf){
+  fxo=xo; fyo=yo; fxf=xf; fn=1000; fh=(fxf-fxo)/fn; ff=func; fx1=x1; fy1=y1;
   TVerlet::Init();
 }
 

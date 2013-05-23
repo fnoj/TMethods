@@ -27,12 +27,21 @@ void Euler(){
   c1->SetGrid();
 
   e1 = new TEuler("-x/sqrt(16-x*x)",-4,4,4,1000);
-  e1->Draw();
+  //  e1->Draw();
+  Double_t x=0;
+  Double_t y=e1->GetYo();
+
+  for(Int_t i=0;i<=1000;i++){
+    e1->CalculatePoint(i,y);
+    x=e1->GetXp();
+    y=e1->GetYp();
+    cout<<x<<"\t"<<y<<endl;
+  }
 
   Double_t *fx = e1->GetX();
   Double_t *fy = e1->GetY();
 
-  e1->Print();
+  //e1->Print();
   //e1->PrintFile("dat.dat");
 
   gPad->Update();

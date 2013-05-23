@@ -57,9 +57,12 @@ class TEuler{
   Double_t GetH(){return fh;}
   Double_t GetX(){return fX;}
   Double_t GetY(){return fY;}
+  Double_t GetXp(){return fx;}                                //Get X Point
+  Double_t GetYp(){return fy;}                                //Get Y Point
   Char_t *GetFunction(){return ff;}                
 
   void Calculate();
+  void CalculatePoint(Int_t,Double_t);
   void Draw();
   void DrawInv();
   void Print();
@@ -94,8 +97,12 @@ void TEuler::Calculate(){
     fy=fy+(TEuler::Eval(fx,fy)*fh); 
     fX[i+1]=fx;
     fY[i+1]=fy;    
-
   }
+}
+
+void TEuler::CalculatePoint(Int_t i,Double_t y){
+  fx=fxo +(i*fh);
+  fy=y+(TEuler::Eval(fx,y)*fh); 
 }
 
 Double_t TEuler::Eval(Double_t x,Double_t y){ 

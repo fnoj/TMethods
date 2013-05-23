@@ -38,7 +38,7 @@ void Euler2(){
   // e1->SetH((e1->GetXf()-e1->GetXo())/(e1->GetN()));
   // e1->Calculate();
 
-  e1 = new TEuler2("",0,1.5,4*TMath::Pi(),1,10000);
+  e1 = new TEuler2("-y",0,1.5,4*TMath::Pi(),1,10000);
 
   x=e1->GetX();
   y=e1->GetY();
