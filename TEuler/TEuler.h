@@ -71,7 +71,7 @@ class TEuler{
 };
 
 TEuler::TEuler(Char_t *func,Double_t xo,Double_t yo ,Double_t xf, Double_t n){
-  fxo=0; fyo=0; fxf=0; fn=1000; fh=0.1; ff="0";
+  fxo=0; fyo=0; fxf=0; fn=1000; fh=0.1; ff="0"; fy=fyo;
   TEuler::Calculate();
 }
 
@@ -81,7 +81,7 @@ TEuler::TEuler(Char_t *func,Double_t xo,Double_t yo ,Double_t xf, Double_t n){
 }
 
 TEuler::TEuler(Char_t *func,Double_t xo,Double_t yo ,Double_t xf){
-  fxo=xo; fyo=yo; fxf=xf; fn=1000; fh=(fxf-fxo)/fn; ff=func;
+  fxo=xo; fyo=yo; fxf=xf; fn=1000; fh=(fxf-fxo)/fn; ff=func; 
   TEuler::Calculate();
 }
 
@@ -100,9 +100,9 @@ void TEuler::Calculate(){
   }
 }
 
-void TEuler::CalculatePoint(Int_t i,Double_t y){
+void TEuler::CalculatePoint(Int_t i){
   fx=fxo +(i*fh);
-  fy=y+(TEuler::Eval(fx,y)*fh); 
+  fy=fy+(TEuler::Eval(fx,fy)*fh); 
 }
 
 Double_t TEuler::Eval(Double_t x,Double_t y){ 

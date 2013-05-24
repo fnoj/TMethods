@@ -32,7 +32,7 @@ void Euler(){
   Double_t y=e1->GetYo();
 
   for(Int_t i=0;i<=1000;i++){
-    e1->CalculatePoint(i,y);
+    e1->CalculatePoint(i);
     x=e1->GetXp();
     y=e1->GetYp();
     cout<<x<<"\t"<<y<<endl;

@@ -62,9 +62,13 @@ class TEuler2{
   Double_t GetX(){return fX;}
   Double_t GetY(){return fY;}
   Double_t GetU(){return fU;}
+  Double_t GetXp(){return fx;}                                //Get X Point
+  Double_t GetYp(){return fy;}                                //Get Y Point
+  Double_t GetUp(){return fu;}                                //Get U Point
   Char_t *GetFunction(){return ff;}                
 
   void Calculate();
+  void CalculatePoint();
   void Draw();
   void DrawInv();
   void Print();
@@ -83,7 +87,7 @@ TEuler2::TEuler2(Char_t *func,Double_t xo,Double_t yo, Double_t xf,Double_t u, D
 }
 
 TEuler2::TEuler2(Char_t *func,Double_t xo,Double_t yo, Double_t xf,Double_t u){
-  fxo=xo; fxf=xf; fn=1000; fh=(fxf-fxo)/fn; ff=func; fuo=u; fyo=yo; 
+  fxo=xo; fxf=xf; fn=1000; fh=(fxf-fxo)/fn; ff=func; fuo=u; fyo=yo; fy=fyo; fu=fuo;
   TEuler2::Calculate();
 }
 
@@ -104,6 +108,12 @@ void TEuler2::Calculate(){
     fY[i+1]=fy;    
     fU[i+1]=fu;
   }
+}
+
+void TEuler2::CalculatePoint(Int_t i){
+  fx=fxo +(i*fh);
+  fu=fu+(TEuler2::Eval(fx,fy)*fh);
+  fy=fy+(fu*fh); 
 }
 
 Double_t TEuler2::Eval(Double_t x,Double_t y){ 
